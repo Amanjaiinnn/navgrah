@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf3e3;
+  --foreground: #251817;
+  --maroon: #7a1f2b;
+  --gold: #c9a227;
+  --green: #1f4e3d;
+  --cream: #fbf3e3;
+  --ink: #251817;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-maroon: var(--maroon);
+  --color-gold: var(--gold);
+  --color-green: var(--green);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-playfair);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lato), sans-serif;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--maroon);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.whatsapp-float {
+  animation: whatsapp-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes whatsapp-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  12% {
+    transform: translateY(-10px);
+  }
+
+  24% {
+    transform: translateY(0);
+  }
+
+  34% {
+    transform: translateY(-5px);
+  }
+
+  44% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    animation: none;
+  }
 }

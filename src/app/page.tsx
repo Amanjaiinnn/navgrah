@@ -1,65 +1,76 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
+import { ContactPanel } from "@/components/ContactPanel";
+import { Hero } from "@/components/Hero";
+import { QuoteBanner } from "@/components/QuoteBanner";
+import { Section } from "@/components/Section";
+import { ServicesGrid } from "@/components/ServicesGrid";
+import { Testimonials } from "@/components/Testimonials";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { brand } from "@/lib/constants";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <Hero />
+
+      <Section
+        eyebrow="About Seema R Jain"
+        title={brand.heroQuote}
+        intro="Seema R Jain brings a warm, practical approach to Vastu checking and consultation, aura, chakra, numerology, and birth chart guidance. Every consultation is designed to make your space and personal energy feel more aligned, peaceful, and supportive."
+        className="bg-white"
+      >
+        <Link
+          href="/about"
+          className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-maroon"
+        >
+          Read Seema&apos;s Story <ArrowRight size={17} />
+        </Link>
+      </Section>
+
+      <Section
+        eyebrow="Services"
+        title="Guidance for space, energy, numbers, and clarity."
+        intro="Each service has a clear purpose, practical recommendations, and a simple way to begin."
+      >
+        <ServicesGrid />
+        <div className="mt-8">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-maroon"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            View Service Details <ArrowRight size={17} />
+          </Link>
         </div>
-      </main>
-    </div>
+      </Section>
+
+      <Section
+        eyebrow="Why Choose Us"
+        title="Small shifts can change how a space feels every day."
+        className="bg-white"
+      >
+        <WhyChooseUs />
+      </Section>
+
+      <QuoteBanner />
+
+      <Section
+        eyebrow="Testimonials"
+        title="Early words from consultation clients."
+        intro="Real client testimonials can be expanded here as more reviews are collected."
+      >
+        <Testimonials />
+      </Section>
+
+      <Section eyebrow="Book" title="Start with one simple message." className="bg-white">
+        <div className="grid overflow-hidden rounded-md border border-maroon/10 md:grid-cols-[0.9fr_1.1fr]">
+          <ContactPanel />
+          <div className="p-5 md:p-8">
+            <ContactForm />
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }
