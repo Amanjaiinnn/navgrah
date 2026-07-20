@@ -2,7 +2,6 @@ import {
   Activity,
   BadgeCheck,
   Brain,
-  Compass,
   HeartPulse,
   Home,
   Leaf,
